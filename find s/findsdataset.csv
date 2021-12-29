@@ -1,0 +1,5 @@
+ Sunny,Warm,Normal,Strong, Warm,Same,TRUE
+ Sunny,Warm,High,Strong,Warm,Same,TRUE
+ Rainy,Cold,High,Strong,Warm,Change,FALSE
+ Sunny,Warm,High,Strong,Cool,Change,TRUE
+Rainy,Cold,High,Strong,Cool,Change,TRUE
