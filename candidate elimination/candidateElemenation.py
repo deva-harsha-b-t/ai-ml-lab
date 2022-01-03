@@ -1,8 +1,5 @@
 import csv
-<<<<<<< HEAD
 
-=======
->>>>>>> bcead6b3904b412ed391f0ccff2289fac34f3f56
 def min_generalizations(h, x):
     h_new = list(h)
     for i in range(len(h)):
@@ -35,11 +32,11 @@ def generalize_S(x, G, S):
             S.remove(s)
             Splus = min_generalizations(s, x)
             ## keep only generalizations that have a counterpart in G
-            S.update([h for h in Splus if any([more_general(g,h) 
+            S.update([h for h in Splus if any([more_general(g,h)
                                                for g in G])])
             ## remove hypotheses less specific than any other in S
-            S.difference_update([h for h in S if 
-                                 any([more_general(h, h1) 
+            S.difference_update([h for h in S if
+                                 any([more_general(h, h1)
                                       for h1 in S if h != h1])])
     return S
 
@@ -55,8 +52,8 @@ def specialize_G(x, domains, G, S):
             G.update([h for h in Gminus if any([more_general(h, s)
                                                 for s in S])])
             ## remove hypotheses less general than any other in G
-            G.difference_update([h for h in G if 
-                                 any([more_general(g1, h) 
+            G.difference_update([h for h in G if
+                                 any([more_general(g1, h)
                                       for g1 in G if h != g1])])
     return G
 def more_general(h1, h2):
@@ -76,7 +73,7 @@ def get_domains(examples):
 def candidate_elimination(examples):
     domains = get_domains(examples)[:-1]
     #print(domains
-    
+
     G = set([("?",)*(len(domains))])
     S = set([('0',)*(len(domains))])
     i=0
@@ -87,16 +84,16 @@ def candidate_elimination(examples):
         x, label = instance[:-1], instance[-1]  # Splitting data into attributes and decisions
         if label=='Y': # x is positive example
             G = {g for g in G if more_general(g, x)}
-            
+
             S = generalize_S(x, G, S)
         else: # x is negative example
             S = {s for s in S if not more_general(s,x)}
             G = specialize_G(x, domains, G, S)
         print("\n G[{0}]:".format(i),G)
         print("\n S[{0}]:".format(i),S)
-    return 
+    return
 
-with open('candidate elimination/car.csv')  as csvFile:
-    examples = [tuple(line) for line in csv.reader(csvFile)]     
+with open('car.csv')  as csvFile:
+    examples = [tuple(line) for line in csv.reader(csvFile)]
 print(examples)
 candidate_elimination(examples)
