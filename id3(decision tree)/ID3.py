@@ -55,6 +55,7 @@ def gain_ratio(data, col):
     return total_entropy / iv
 
 def create_node(data, metadata):
+    #print(np.unique(data[:,-1]))
     if (np.unique(data[:, -1])).shape[0] == 1:
         node = Node("")
         node.answer = np.unique(data[:, -1])[0]
@@ -63,14 +64,14 @@ def create_node(data, metadata):
     for col in range(data.shape[1] - 1):
         gains[col] = gain_ratio(data, col)
     split = np.argmax(gains)
-    node = Node(metadata[split])    
+    node = Node(metadata[split])
     metadata = np.delete(metadata, split, 0)
     items, dict = subtables(data, split, delete=True)
     for x in range(items.shape[0]):
         child = create_node(dict[items[x]], metadata)
         node.children.append((items[x], child))
-    return node        
-   
+    return node
+
 def empty(size):
     s = ""
     for x in range(size-1):
@@ -85,10 +86,10 @@ def print_tree(node, level):
     for value, n in node.children:
         print(empty(level + 1), value)
         print_tree(n, level + 2)
-       
+
 
 metadata = ['age','competition','type','profit']
-traindata = pd.read_csv("id3(decision tree)/tennis.csv")
+traindata = pd.read_csv("company.csv")
 data = np.array(traindata)
 node = create_node(data, metadata)
 print_tree(node, 0)

@@ -7,7 +7,6 @@ def min_generalizations(h, x):
             h_new[i] = '?' if h[i] != '0' else x[i]
     return [tuple(h_new)]
 
-
 def min_specializations(h, domains, x):
     results = []
     for i in range(len(h)):
@@ -20,8 +19,6 @@ def min_specializations(h, domains, x):
             h_new = h[:i] + ('0',) + h[i+1:]
             results.append(h_new)
     return results
-
-
 
 def generalize_S(x, G, S):
     S_prev = list(S)
