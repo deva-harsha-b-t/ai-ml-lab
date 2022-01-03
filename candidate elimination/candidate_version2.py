@@ -1,7 +1,7 @@
 import csv
-with open("desktop/car.csv","r") as csvfile:
+with open("car.csv","r") as csvfile:
     a=[tuple(x) for x in csv.reader(csvfile)]
-
+print(a)
 num_att=len(a[0])-1
 
 S=['0']*num_att
@@ -17,7 +17,7 @@ print("-----------")
 
 
 for i in range(1,len(a)):
-    if a[i][num_att]=='YES':
+    if a[i][num_att]=='Y':
         for j in range(num_att):
             if S[j]!=a[i][j]:
                 S[j]='?'
@@ -25,9 +25,10 @@ for i in range(1,len(a)):
             for k in range(len(temp)-1):
                 if temp[k][j]!=S[j] and temp[k][j]!='?':
                     del temp[k]
-    
-    if a[i][num_att]=='NO':
-        if len(temp)==0:
+
+    if a[i][num_att]=='N':
+        if not (temp):
+            
             for j in range(num_att):
                 if a[i][j]!=S[j] and S[j]!='?':
                     G[j]=S[j]
