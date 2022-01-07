@@ -1,11 +1,12 @@
 import pandas as pd
 from collections import Counter
 import math
-df_tennis=pd.read_csv("company.csv")
+import json
+df=pd.read_csv("company.csv")
 
 def entropy_list(a_list):
     cnt=Counter(x for x in a_list)
-    num_instance=len(a_list)*1.0
+    num_instance=len(a_list)
     probs=[x/num_instance for x in cnt.values()]
     return entropy(probs)
 
@@ -14,7 +15,7 @@ def entropy(probs):
 
 def info_gain(df,attr,target):
     df_split=df.groupby(attr)   #splitting the dataset into two parts, in which one dataset consist of a column values of attribute 'attr'
-    nobs=len(df.index)*1.0      #no. of rows in the dataset
+    nobs=len(df.index)     #no. of rows in the dataset
     df_agg_ent=df_split.agg({target:[entropy_list, lambda x: len(x)/nobs]})
     #print(df_agg_ent)
     df_agg_ent.columns=['Entropy','PropObserved']   #adding columns names to the dataset 'df_agg_ent'
@@ -41,8 +42,8 @@ def id3(df,attribute_name,target):
             tree[best_attr][attr_val]=subtree
         return tree
 
-attribute_names=list(df_tennis.columns)
+attribute_names=list(df.columns)
 attribute_names.remove('Profit')
-tree=id3(df_tennis,attribute_names,'Profit')
+tree=id3(df,attribute_names,'Profit')
 print("The resulant Decision Tree")
-print(tree)
+print(json.dumps(tree,sort_keys=False,indent=3))
