@@ -84,7 +84,7 @@ def candidate_elimination(examples):
 
             S = generalize_S(x, G, S)
         else: # x is negative example
-            S = {s for s in S if not more_general(s,x)}
+            #S = {s for s in S if not more_general(s,x)}
             G = specialize_G(x, domains, G, S)
         print("\n G[{0}]:".format(i),G)
         print("\n S[{0}]:".format(i),S)

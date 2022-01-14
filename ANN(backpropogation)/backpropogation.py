@@ -11,7 +11,7 @@ def derivatives_sigmoid(x):
     return x * (1 - x)
 #Variable initialization
 epoch=7000 #Setting training iterations
-lr=0.5 #Setting learning rate
+lr=0.5  #Setting learning rate
 inputlayer_neurons = 2 #number of features in data set
 hiddenlayer_neurons = 3 #number of hidden layers neurons
 output_neurons = 1 #number of neurons at output layer
