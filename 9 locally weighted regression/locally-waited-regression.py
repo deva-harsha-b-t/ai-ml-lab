@@ -49,7 +49,7 @@ xsort = X[SortIndex][:,0]
      
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.scatter(bill,tip, color='green')
+ax.scatter(bill,tip)
 ax.plot(xsort[:,1],ypred[SortIndex], color = 'red', linewidth=5)
 plt.xlabel('Total bill')
 plt.ylabel('Tip')

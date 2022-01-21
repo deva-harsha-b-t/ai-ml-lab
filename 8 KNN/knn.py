@@ -19,6 +19,9 @@ x_train, x_test, y_train, y_test=train_test_split(iris_data,iris_labels,test_siz
 classifier=KNeighborsClassifier(n_neighbors=5)
 classifier.fit(x_train,y_train)
 y_pred=classifier.predict(x_test)
+print("predicted\t actual")
+for i in range(len(y_pred)):
+    print(str(y_pred[i])+"\t\t"+str(y_test[i]))
 print('confusion matrix is as follows')
 print(confusion_matrix(y_test,y_pred))
 print('Accuracy metrics')
