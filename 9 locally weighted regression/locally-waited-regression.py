@@ -3,22 +3,16 @@
     Select appropriate data set for your experiment and draw graphs 
 
 """
-from numpy import *
-import operator
-from os import listdir
-import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np1
-import numpy.linalg as np
-from scipy.stats.stats import pearsonr
+import numpy as np
  
 def kernel(point,xmat, k):
-    m,n = np1.shape(xmat)
-    weights = np1.mat(np1.eye((m)))
+    m,n = np.shape(xmat)
+    weights = np.mat(np.eye((m)))
     for j in range(m):
         diff = point - X[j]
-        weights[j,j] = np1.exp(diff*diff.T/(-2.0*k**2))
+        weights[j,j] = np.exp(diff*diff.T/(-2.0*k**2))
     return weights
  
 def localWeight(point,xmat,ymat,k):
@@ -27,25 +21,23 @@ def localWeight(point,xmat,ymat,k):
     return W
      
 def localWeightRegression(xmat,ymat,k):
-    m,n = np1.shape(xmat)
-    ypred = np1.zeros(m)
+    m,n = np.shape(xmat)
+    ypred = np.zeros(m)
     for i in range(m):
         ypred[i] = xmat[i]*localWeight(xmat[i],xmat,ymat,k)
     return ypred
        
 # load data points
 data = pd.read_csv('10data.csv')
-bill = np1.array(data.total_bill)
-tip = np1.array(data.tip)
+bill = np.array(data.total_bill)
+tip = np.array(data.tip)
  
 #preparing and add 1 in bill
-mbill = np1.mat(bill)
-mtip = np1.mat(tip)
-m= np1.shape(mbill)[1]
-one = np1.mat(np1.ones(m))
-X= np1.hstack((one.T,mbill.T))
-
-
+mbill = np.mat(bill)
+mtip = np.mat(tip)
+m= np.shape(mbill)[1]
+one = np.mat(np.ones(m))
+X= np.hstack((one.T,mbill.T))
 
  
 #set k here

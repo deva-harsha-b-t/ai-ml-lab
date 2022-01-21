@@ -24,8 +24,8 @@ print('Graph for whole dataset')
 plt.scatter(f1, f2, c='black', s=7)
 plt.show()
 ##########################################
-kmeans = KMeans(3, random_state=0)
-labels = kmeans.fit(X).predict(X)
+kmeans = KMeans(3, random_state=0).fit(X)
+labels = kmeans.predict(X)
 centroids = kmeans.cluster_centers_
 plt.scatter(X[:, 0], X[:, 1], c=labels, s=40, cmap='viridis');
 print('Graph using Kmeans Algorithm')
