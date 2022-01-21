@@ -1,3 +1,9 @@
+"""
+4.  Write a program to demonstrate the working of the decision tree based ID3 algorithm. 
+    Use an appropriate data set for building the decision tree and 
+    apply this knowledge toclassify a new sample.
+
+"""
 import numpy as np
 import math
 import pandas as pd

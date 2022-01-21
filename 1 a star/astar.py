@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 29 09:05:55 2021
+"""1. Implement A* Search algorithm"""
 
-@author: admin
-"""
 
 import sys
 

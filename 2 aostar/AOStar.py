@@ -1,3 +1,5 @@
+"""2. Implement AO* Search algorithm"""
+
 class Graph:
     def __init__(self, graph, heuristicNodeList, startNode): #instantiate graph object with graph topology, heuristic values, start node
         self.graph = graph

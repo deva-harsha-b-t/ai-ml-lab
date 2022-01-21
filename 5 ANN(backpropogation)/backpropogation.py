@@ -1,3 +1,8 @@
+"""
+5.  Build an Artificial Neural Network by implementing the Backpropagation algorithm 
+    and test the same using appropriate data sets.
+
+"""
 import numpy as np
 X = np.array(([2, 9], [1, 5], [3, 6]))
 Y = np.array(([92], [86], [89]))

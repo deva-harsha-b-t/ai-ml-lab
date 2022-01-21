@@ -1,3 +1,9 @@
+"""
+6.  Write a program to implement the naïve Bayesian classifier for a sample 
+    training data set stored as a .CSV file. Compute the accuracy of the 
+    classifier, considering few test data sets.
+
+"""
 import pandas as pd
 msg=pd.read_csv('naivtext.csv',names=['message','label'])
 print('The dimensions of the dataset',msg.shape)
